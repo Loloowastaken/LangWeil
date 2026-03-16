@@ -1,0 +1,296 @@
+html{
+    font-family: Oswald;
+    font-size: 16px;
+    transition: font-size 0.5s ease;
+}
+
+header{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    padding: 10px;
+    border: 5px solid var(--culoare-contur);
+    box-shadow: 1px 0px 5px var(--culoare-fundal);
+    background-color: var(--culoare-hover);
+}
+body {
+    --culoare-fundal: #493be3;
+    --culoare-contur: #3be3c1;
+    --culoare-text: #dfebf5;
+    --culoare-highlight: #3bcde5;
+    --culoare-hover: #3b62e3;
+    --margine-pagina: 120px;
+    background-color: var(--culoare-fundal);
+    transition: var(--margine-pagina) 0.5s ease;
+}
+
+footer a {
+    text-decoration: underline;
+    text-decoration-color: var(--culoare-text);
+    color: var(--culoare-highlight);
+}
+
+.link-resurse a {
+    text-decoration: underline;
+    text-decoration-color: var(--culoare-text);
+    color: var(--culoare-highlight);
+}
+
+p {
+    border: 1px solid var(--culoare-fundal);
+}
+
+footer{
+    border-radius: 10px 10px 10px 10px;
+    background-color: var(--culoare-highlight);
+    background-color: var(--culoare-hover);
+    color: var(--culoare-text);
+    text-align: center;
+    padding: 10px;  
+}
+
+main {
+    margin-left: var(--margine-pagina);
+    margin-right: var(--margine-pagina);
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+
+#grid-pagina>* {
+    border: 1px solid var(--culoare-contur);
+    box-shadow: 0px 0px 5px var(--culoare-contur);
+    padding: 10px;
+    background-color: var(--culoare-fundal);
+    color: var(--culoare-text);
+}
+
+#grid-pagina {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas:
+        "welcome welcome welcome"
+        "user data-user data-site"
+        "calendar orar orar"
+        "anunturi orar orar"
+        "resurse resurse resurse" /* pentru a evita problema nealocarii gridurilor, asta e toata zona 8 */
+        "faq faq faq" 
+        "istoric istoric istoric";
+}
+
+#welcome {
+    grid-area: welcome;
+}
+
+#user {
+    grid-area: user;
+}
+
+#data-user {
+    grid-area: data-user;
+}
+
+#data-site {
+    grid-area: data-site;
+}
+
+#calendar {
+    grid-area: calendar;
+}
+
+#orar {
+    grid-area: orar;
+}
+
+#anunturi {
+    grid-area: anunturi;
+}
+
+#resurse {
+    grid-area: resurse;
+}
+
+#faq {
+    grid-area: faq;
+}
+#istoric{
+    grid-area: istoric;
+}
+
+figure {
+    margin: 0;
+}
+
+figure.fg-img>img {
+    width: 100%;
+}
+img {
+    display: block;
+    max-width: 100%;
+    min-width: 50%;
+    height: auto;}
+.container-iframe{
+    display: flex;
+    align-items: flex-end;
+    max-width: 100%;
+    height:auto;
+    gap: 0;
+}
+.video-iframe{
+    max-width:100%;
+    height:auto;
+}
+.taburi-iframe{
+    display: flex;
+    flex-direction: column;
+}
+.taburi-iframe > a{
+    display: inline-block;
+    padding: 8px;
+    background: linear-gradient(to bottom, var(--culoare-fundal)0%, var(--culoare-contur)100%);
+    border: 2px solid var(--culoare-contur);
+    border-left: 4px solid var(--culoare-contur);
+    color: var(--culoare-text);
+    text-decoration: none;
+    text-shadow: 2px 0px 5px var(--culoare-highlight);
+    border-top-left-radius: 0;
+    border-top-right-radius: 45px;
+    margin-right: 10px;
+    transition: all 1s linear;
+}
+.taburi-iframe > a:hover{
+    background-color: var(--culoare-contur);
+    color: var(--culoare-hover);
+    border-left-color: (var(--culoare-hover));
+}
+
+@media screen and (max-width:1200px) {
+    html{
+        font-size: 14px;
+    }
+    body{
+        --margine-pagina:80px;
+    }
+    main{
+        margin-left: var(--margine-pagina);
+        margin-right: var(--margine-pagina);
+    }
+    #table-container{
+        overflow-x: auto;
+    }
+/* teoretic nu respecta layoutul fiindca 
+        acum nu mai sunt trei elemente pe randul 2
+        dar e un compromis ca orar sa nu para taiat
+        si consider ca justifica schimbarea layoutului */
+    #grid-pagina{
+        gap: 8px;
+        grid-template-columns: 0.5fr 2fr;
+        grid-template-areas:"welcome welcome"
+                            "user data-user"
+                            "data-site orar"
+                            "calendar orar"
+                            "anunturi orar"
+                            "resurse resurse"
+                            "faq faq"
+                            "istoric istoric";
+    }
+}
+
+@media screen and (max-width:700px) {
+    html{
+        font-size: 12px;
+    }
+    body{
+        --margine-pagina:50px;
+        animation: none;
+        transition: none;
+    }
+    main{
+        margin-left: 0;
+        margin-right: 0;
+    }
+    #grid-pagina{
+        gap: 5px;
+        display: block;
+    }
+}
+
+#tab-orar{
+    border-spacing: 5px;
+    border-collapse: collapse;
+    caption-side: bottom;
+}
+
+#tab-orar, #tab-orar td, #tab-orar th{
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+}   
+#tab-orar tbody td:nth-child(even){
+    background-color: var(--culoare-hover);
+}
+#tab-orar tbody td:nth-child(odd){
+    background-color: var(--culoare-fundal);
+}
+#tab-orar tbody td.exceptie-tabel{
+    background-color: var(--culoare-fundal)
+}
+tr td{
+    transition: all 0.75s linear;;
+    border: 1px solid var(--culoare-contur);
+    background-color: var(--culoare-fundal)
+}
+tr:hover td{
+    background-color: var(--culoare-hover) !important;
+    color: var(--culoare-highlight);
+    border-width: 5px;
+}
+tr:hover td.exceptie-tabel{
+    background-color: var(--culoare-fundal) !important;
+    color: var(--culoare-text);}
+
+
+#link-top {
+  position: fixed;
+  bottom: 0.3em;
+  right: 0.3em;
+  opacity: 0.5;
+  left: 0.3em;
+  width: 3rem;
+  height: 3rem;
+  transform: rotate(45deg);
+  line-height: 3rem;
+  text-align: center;
+  border: 5px solid var(--culoare-contur);
+  box-sizing: border-box;
+  border-top-color: var(--culoare-highlight);
+  background: rgb(220, 220, 220);
+  opacity: 0.5;
+  transition: 600ms ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+#link-top:hover {
+  opacity: 1;
+  background-color: var(--culoare-highlight);
+  border-color: var(--culoare-hover);
+}
+
+#triunghi {
+  height: 0px;
+  width: 0;
+  display: inline-block;
+  border-bottom: 1.5rem solid var(--culoare-contur);
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-radius: 50%;
+  transform: rotate(-45deg);
+  transition: border-bottom-color 0.5s ease;
+  vertical-align: top;}
+#link-top:hover #triunghi {
+  border-bottom-color: var(--culoare-text);
+}
