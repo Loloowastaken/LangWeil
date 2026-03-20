@@ -1,0 +1,31 @@
+{
+  "name": "langweil",
+  "version": "1.0.0",
+  "description": "proiect tehnici web",
+  "keywords": [
+    "limbi",
+    "straine",
+    "engleza",
+    "germana",
+    "japoneza"
+  ],
+  "homepage": "https://github.com/Loloowastaken/LangWeil#readme",
+  "bugs": {
+    "url": "https://github.com/Loloowastaken/LangWeil/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Loloowastaken/LangWeil.git"
+  },
+  "license": "ISC",
+  "author": "Dobre Mihnea-Alexandru",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^5.0.1",
+    "express": "^5.2.1"
+  }
+}
