@@ -1,0 +1,33 @@
+#ch-menu {
+  display: none;
+}
+
+ul.meniu {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: var(--culoare-deschisa-meniu);
+  margin: 0;
+  padding: 0;
+  clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+  pointer-events: none;
+}
+#ch-menu:checked + ul.meniu {
+  pointer-events: auto;
+  animation: animatie-triunghi 0.7s forwards cubic-bezier(0.5, 0, 0.1, 1);
+}
+
+@keyframes animatie-triunghi {
+  0% {
+    clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+  }
+  60% {
+    clip-path: polygon(0% 0%, 100% 0%, 20% 100%, 0% 100%);
+  }
+  100% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+}/*# sourceMappingURL=nav700.css.map */

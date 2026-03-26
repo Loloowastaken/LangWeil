@@ -1,0 +1,51 @@
+#hamburger {
+  display: block;
+}
+
+#ch-menu {
+  display: none;
+}
+
+ul.meniu {
+  display: block;
+  position: absolute;
+  top: 3em;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  visibility: hidden;
+}
+
+#ch-menu:checked + ul.meniu {
+  visibility: visible;
+}
+
+ul.meniu > li {
+  width: 100%;
+  position: relative;
+  background-color: transparent !important;
+  border-bottom: 1px solid var(--culoare-inchisa-meniu);
+  clip-path: none !important;
+}
+
+ul.meniu > li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--culoare-deschisa-meniu);
+  z-index: -1;
+  clip-path: polygon(0% 0%, 0% 0%, 0% 50%, 0% 100%, 0% 100%);
+  transition: clip-path 1s linear;
+}
+
+#ch-menu:checked + ul.meniu > li::before {
+  clip-path: polygon(0% 0%, 100% 0%, 150% 50%, 100% 100%, 0% 100%);
+}
+
+ul.meniu > li ul {
+  position: relative;
+  z-index: 10;
+}/*# sourceMappingURL=nav700.css.map */

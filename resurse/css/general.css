@@ -1,18 +1,16 @@
-html{
+html {
     font-family: Oswald;
     font-size: 16px;
     transition: font-size 0.5s ease;
 }
 
-header{
-    display: flex;
-    justify-items: center;
-    align-items: center;
+header {
     padding: 10px;
     border: 5px solid var(--culoare-contur);
     box-shadow: 1px 0px 5px var(--culoare-fundal);
     background-color: var(--culoare-hover);
 }
+
 body {
     --culoare-fundal: #493be3;
     --culoare-contur: #3be3c1;
@@ -40,13 +38,13 @@ p {
     border: 1px solid var(--culoare-fundal);
 }
 
-footer{
+footer {
     border-radius: 10px 10px 10px 10px;
     background-color: var(--culoare-highlight);
     background-color: var(--culoare-hover);
     color: var(--culoare-text);
     text-align: center;
-    padding: 10px;  
+    padding: 10px;
 }
 
 main {
@@ -74,8 +72,9 @@ main {
         "user data-user data-site"
         "calendar orar orar"
         "anunturi orar orar"
-        "resurse resurse resurse" /* pentru a evita problema nealocarii gridurilor, asta e toata zona 8 */
-        "faq faq faq" 
+        "resurse resurse resurse"
+        /* pentru a evita problema nealocarii gridurilor, asta e toata zona 8 */
+        "faq faq faq"
         "istoric istoric istoric";
 }
 
@@ -114,7 +113,8 @@ main {
 #faq {
     grid-area: faq;
 }
-#istoric{
+
+#istoric {
     grid-area: istoric;
 }
 
@@ -125,29 +125,35 @@ figure {
 figure.fg-img>img {
     width: 100%;
 }
+
 img {
     display: block;
     max-width: 100%;
     min-width: 50%;
-    height: auto;}
-.container-iframe{
+    height: auto;
+}
+
+.container-iframe {
     display: flex;
     align-items: flex-end;
     max-width: 100%;
-    height:auto;
+    height: auto;
     gap: 0;
 }
-.video-iframe{
-    max-width:100%;
-    height:auto;
+
+.video-iframe {
+    max-width: 100%;
+    height: auto;
 }
-.taburi-iframe{
-    max-width:100%;
-    height:auto;
+
+.taburi-iframe {
+    max-width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
 }
-.taburi-iframe > a{
+
+.taburi-iframe>a {
     display: inline-block;
     padding: 8px;
     background: linear-gradient(to bottom, var(--culoare-fundal)0%, var(--culoare-contur)100%);
@@ -161,138 +167,259 @@ img {
     margin-right: 10px;
     transition: all 1s linear;
 }
-.taburi-iframe > a:hover{
+
+.taburi-iframe>a:hover {
     background-color: var(--culoare-contur);
     color: var(--culoare-hover);
     border-left-color: (var(--culoare-hover));
 }
 
 @media screen and (max-width:1200px) {
-    html{
+    html {
         font-size: 14px;
     }
-    body{
-        --margine-pagina:80px;
+
+    body {
+        --margine-pagina: 80px;
     }
-    main{
+
+    main {
         margin-left: var(--margine-pagina);
         margin-right: var(--margine-pagina);
     }
-    #table-container{
+
+    #table-container {
         overflow-x: auto;
     }
-/* teoretic nu respecta layoutul fiindca 
+
+    /* teoretic nu respecta layoutul fiindca 
         acum nu mai sunt trei elemente pe randul 2
         dar e un compromis ca orar sa nu para taiat
         si consider ca justifica schimbarea layoutului */
-    #grid-pagina{
+    #grid-pagina {
         gap: 8px;
         grid-template-columns: 1fr 2fr;
-        grid-template-areas:"welcome welcome"
-                            "user data-user"
-                            "data-site orar"
-                            "calendar orar"
-                            "anunturi orar"
-                            "resurse resurse"
-                            "faq faq"
-                            "istoric istoric";
+        grid-template-areas: "welcome welcome"
+            "user data-user"
+            "data-site orar"
+            "calendar orar"
+            "anunturi orar"
+            "resurse resurse"
+            "faq faq"
+            "istoric istoric";
     }
 }
 
 @media screen and (max-width:700px) {
-    html{
+    html {
         font-size: 12px;
     }
-    body{
-        --margine-pagina:50px;
+
+    body {
+        --margine-pagina: 50px;
         animation: none;
         transition: none;
     }
-    main{
+
+    main {
         margin-left: 0;
         margin-right: 0;
     }
-    #grid-pagina{
+
+    #grid-pagina {
         gap: 5px;
         display: block;
     }
 }
 
-#tab-orar{
+#tab-orar {
     border-spacing: 5px;
     border-collapse: collapse;
     caption-side: bottom;
 }
 
-#tab-orar, #tab-orar td, #tab-orar th{
+#tab-orar,
+#tab-orar td,
+#tab-orar th {
     border: 1px solid black;
     padding: 5px;
     text-align: center;
-}   
-#tab-orar tbody td:nth-child(even){
+}
+
+#tab-orar tbody td:nth-child(even) {
     background-color: var(--culoare-hover);
 }
-#tab-orar tbody td:nth-child(odd){
+
+#tab-orar tbody td:nth-child(odd) {
     background-color: var(--culoare-fundal);
 }
-#tab-orar tbody td.exceptie-tabel{
+
+#tab-orar tbody td.exceptie-tabel {
     background-color: var(--culoare-fundal)
 }
-tr td{
-    transition: all 0.75s linear;;
+
+tr td {
+    transition: all 0.75s linear;
+    ;
     border: 1px solid var(--culoare-contur);
     background-color: var(--culoare-fundal)
 }
-tr:hover td{
+
+tr:hover td {
     background-color: var(--culoare-hover) !important;
     color: var(--culoare-highlight);
     border-width: 5px;
 }
-tr:hover td.exceptie-tabel{
+
+tr:hover td.exceptie-tabel {
     background-color: var(--culoare-fundal) !important;
-    color: var(--culoare-text);}
+    color: var(--culoare-text);
+}
 
 
 #link-top {
-  position: fixed;
-  bottom: 0.3em;
-  right: 0.3em;
-  opacity: 0.5;
-  left: 0.3em;
-  width: 3rem;
-  height: 3rem;
-  transform: rotate(45deg);
-  line-height: 3rem;
-  text-align: center;
-  border: 5px solid var(--culoare-contur);
-  box-sizing: border-box;
-  border-top-color: var(--culoare-highlight);
-  background: rgb(220, 220, 220);
-  opacity: 0.5;
-  transition: 600ms ease-in-out;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
+    position: fixed;
+    bottom: 0.3em;
+    right: 0.3em;
+    opacity: 0.5;
+    left: 0.3em;
+    width: 3rem;
+    height: 3rem;
+    transform: rotate(45deg);
+    line-height: 3rem;
+    text-align: center;
+    border: 5px solid var(--culoare-contur);
+    box-sizing: border-box;
+    border-top-color: var(--culoare-highlight);
+    background: rgb(220, 220, 220);
+    opacity: 0.5;
+    transition: 600ms ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
 }
 
 #link-top:hover {
-  opacity: 1;
-  background-color: var(--culoare-highlight);
-  border-color: var(--culoare-hover);
+    opacity: 1;
+    background-color: var(--culoare-highlight);
+    border-color: var(--culoare-hover);
 }
 
 #triunghi {
-  height: 0px;
-  width: 0;
-  display: inline-block;
-  border-bottom: 1.5rem solid var(--culoare-contur);
-  border-left: 1rem solid transparent;
-  border-right: 1rem solid transparent;
-  border-radius: 50%;
-  transform: rotate(-45deg);
-  transition: border-bottom-color 0.5s ease;
-  vertical-align: top;}
+    height: 0px;
+    width: 0;
+    display: inline-block;
+    border-bottom: 1.5rem solid var(--culoare-contur);
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+    border-radius: 50%;
+    transform: rotate(-45deg);
+    transition: border-bottom-color 0.5s ease;
+    vertical-align: top;
+}
+
 #link-top:hover #triunghi {
-  border-bottom-color: var(--culoare-text);
+    border-bottom-color: var(--culoare-text);
+}
+
+
+/* arata destul de groaznic dar ma rog... */
+@media print {
+    footer .banner {
+        position: absolute;
+        display: inline-block;
+        bottom: 0cm;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 70%;
+        text-align: center;
+        border: 4px inset black;
+        background: white;
+        padding: 5px;
+        z-index: 10;
+    }
+
+    img,
+    video,
+    iframe,
+    audio,
+    figure,
+    figcaption,
+    .taburi-iframe,
+    a[href="#"] {
+        display: none !important;
+    }
+
+    #grid-pagina,
+    main {
+        display: block;
+    }
+
+    a {
+        color: black !important;
+        text-decoration: none !important;
+        background: none !important;
+    }
+
+    h1 {
+        text-align: center;
+        page-break-before: always;
+    }
+
+    h1:first-of-type {
+        page-break-before: avoid;
+    }
+
+    nav ul.meniu {
+        display: block !important;
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+
+    nav ul.meniu li {
+        display: list-item !important;
+        float: none !important;
+        width: auto !important;
+        clip-path: none !important;
+    }
+
+    nav ul.meniu li ul {
+        display: none !important;
+    }
+
+    footer {
+        page-break-before: always;
+    }
+
+    body::after {
+        content: "Dobre\a Mihnea-Alexandru";
+        white-space: pre;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 4cm; 
+        height: 1cm;
+        border: 3px solid black;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: bold;
+        opacity: 0.4;
+        font-size: 10pt;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        z-index: 100;
+    }
+
+    @page :left {
+        margin-left: 3cm;
+        margin-right: 1cm;
+    }
+
+    @page :right {
+        margin-left: 1cm;
+        margin-right: 3cm;
+    }
 }

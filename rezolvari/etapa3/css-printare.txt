@@ -1,0 +1,98 @@
+@media print {
+    footer .banner {
+        position: absolute;
+        display: inline-block;
+        bottom: 0cm;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 70%;
+        text-align: center;
+        border: 4px inset black;
+        background: white;
+        padding: 5px;
+        z-index: 10;
+    }
+
+    img,
+    video,
+    iframe,
+    audio,
+    figure,
+    figcaption,
+    .taburi-iframe,
+    a[href="#"] {
+        display: none !important;
+    }
+
+    #grid-pagina,
+    main {
+        display: block;
+    }
+
+    a {
+        color: black !important;
+        text-decoration: none !important;
+        background: none !important;
+    }
+
+    h1 {
+        text-align: center;
+        page-break-before: always;
+    }
+
+    h1:first-of-type {
+        page-break-before: avoid;
+    }
+
+    nav ul.meniu {
+        display: block !important;
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+
+    nav ul.meniu li {
+        display: list-item !important;
+        float: none !important;
+        width: auto !important;
+        clip-path: none !important;
+    }
+
+    nav ul.meniu li ul {
+        display: none !important;
+    }
+
+    footer {
+        page-break-before: always;
+    }
+
+    body::after {
+        content: "Dobre\a Mihnea-Alexandru";
+        white-space: pre;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 4cm; 
+        height: 1cm;
+        border: 3px solid black;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: bold;
+        opacity: 0.4;
+        font-size: 10pt;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        z-index: 100;
+    }
+
+    @page :left {
+        margin-left: 3cm;
+        margin-right: 1cm;
+    }
+
+    @page :right {
+        margin-left: 1cm;
+        margin-right: 3cm;
+    }
+}

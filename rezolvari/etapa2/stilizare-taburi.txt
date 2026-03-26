@@ -1,0 +1,31 @@
+.container-iframe{
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    gap: 0;
+}
+.video-iframe{
+    height:100%;
+}
+.taburi-iframe{
+    display: flex;
+    flex-direction: column;
+}
+.taburi-iframe > a{
+    display: inline-block;
+    padding: 8px;
+    background: linear-gradient(to bottom, var(--culoare-fundal)0%, var(--culoare-contur)100%);
+    border: 1px solid var(--culoare-contur);
+    border-left: none;
+    color: var(--culoare-text);
+    text-decoration: none;
+    text-shadow: 2px 0px 5px var(--culoare-highlight);
+    border-top-left-radius: 0;
+    border-top-right-radius: 45px;
+    margin-right: 10px;
+    transition: all 1s linear;
+}
+.taburi-iframe > a:hover{
+    background-color: var(--culoare-contur);
+    color: var(--culoare-hover);
+}

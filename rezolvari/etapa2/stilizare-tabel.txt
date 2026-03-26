@@ -1,0 +1,27 @@
+#tab-orar, #tab-orar td, #tab-orar th{
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+}   
+#tab-orar tbody td:nth-child(even){
+    background-color: var(--culoare-hover);
+}
+#tab-orar tbody td:nth-child(odd){
+    background-color: var(--culoare-fundal);
+}
+#tab-orar tbody td.exceptie-tabel{
+    background-color: var(--culoare-fundal)
+}
+tr td{
+    transition: all 0.75s linear;;
+    border: 1px solid var(--culoare-contur);
+    background-color: var(--culoare-fundal)
+}
+tr:hover td{
+    background-color: var(--culoare-hover) !important;
+    color: var(--culoare-highlight);
+    border-width: 5px;
+}
+tr:hover td.exceptie-tabel{
+    background-color: var(--culoare-fundal) !important;
+    color: var(--culoare-text);}

@@ -1,0 +1,105 @@
+/*Folosind variabile css, să se adauge o spațiere în stânga și dreapta paginii, comprimând un pic conținutul, dar aerisind pagina. Spațierea trebuie să fie identică în cele două direcții. Spațierea va fi mai mică pe ecran mediu și de valoare minimă pe ecran mic.*/
+
+
+in body: --margine-pagina: 120px; 	
+    margin-left: var(--margine-pagina);
+    margin-right: var(--margine-pagina);
+    [...]
+
+@media screen and (max-width:1200px) {
+    html {
+        font-size: 14px;
+    }
+
+    body {
+        --margine-pagina: 80px;
+    }
+
+    main {
+        margin-left: var(--margine-pagina);
+        margin-right: var(--margine-pagina);
+    }
+    [...]
+@media screen and (max-width:700px) {
+    html {
+        font-size: 12px;
+    }
+
+    body {
+        --margine-pagina: 50px;
+        animation: none;
+        transition: none;
+    }
+
+    main {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    [...]
+
+/*Folosiți gap pentru a realiza o spațiere între celulele gridului paginii. Spațierea trebuie să descrească pe ecran mediu și mic.*/
+
+#grid-pagina {
+    display: grid;
+    gap: 10px; [...]
+
+in max-width 1200
+[...]
+    #grid-pagina {
+        gap: 8px; [...]
+in max-width 700
+[...]
+    #grid-pagina {
+        gap: 5px; [...]
+/*Izolați vizual zonele paginii: header, footer, și zonele gridului folosind minim 3 dintre următoarele efecte css: background  de culoare (aleasă din schema cromatică) diferită pe zone diferite, border, colțuri rotunjite ale box-ului, box-shadow*/
+
+header {
+    padding: 10px;
+    border: 5px solid var(--culoare-contur); !!border!!
+    box-shadow: 1px 0px 5px var(--culoare-fundal); !!box shadow!!
+    background-color: var(--culoare-hover); !!culoare fundal diferita!!
+}
+
+footer {
+    border-radius: 10px 10px 10px 10px; !!colt rotunjit!!
+    background-color: var(--culoare-highlight); !!culoare fundal diferita!!
+    color: var(--culoare-text);
+    text-align: center;
+    padding: 10px;
+}
+
+#grid-pagina>* {
+    border: 1px solid var(--culoare-contur);!!border!!
+    box-shadow: 0px 0px 5px var(--culoare-contur); !!box shadow!!
+    padding: 10px;
+    background-color: var(--culoare-fundal); !!culoare fundal diferita de celelalte doua!!
+    color: var(--culoare-text);
+}
+
+/* Folosiți padding pentru a distanța textul din zone de granițele zonelor. Padding-ul ar trebui să fie egal pentru toate zonele de text. Folosiți variabile CSS în cazul în care nu puteți asigura acest lucru prin simplii selectori.*/
+
+se observa sus!!
+
+/*Elementele media (imagini, videoclipuri etc.) care vin cu o lățime presetată vor primi lățimea în procentaje, setând, totuși, o lățime maximă si minimă pentru ele, pentru a nu avea efecte vizuale nedorite. Aceste valori pot să difere în funcție de dimensiunea ecranului*/
+
+peste tot, dar cateva exemple
+
+img {
+    display: block;
+    max-width: 100%;
+    min-width: 50%;
+    height: auto;
+}
+
+.container-iframe {
+    display: flex;
+    align-items: flex-end;
+    max-width: 100%;
+    height: auto;
+    gap: 0;
+}
+
+.video-iframe {
+    max-width: 100%;
+    height: auto;
+}
