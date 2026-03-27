@@ -1,98 +1,10 @@
-#grid-pagina>* {
-    border: 1px solid var(--culoare-contur);
-    box-shadow: 0px 0px 5px var(--culoare-contur);
-    padding: 10px;
+body {
+    --culoare-fundal: #493be3;
+    --culoare-contur: #3be3c1;
+    --culoare-text: #dfebf5;
+    --culoare-highlight: #3bcde5;
+    --culoare-hover: #3b62e3;
+    --margine-pagina: 120px;
     background-color: var(--culoare-fundal);
-    color: var(--culoare-text);
-}
-
-#grid-pagina {
-    display: grid;
-    gap: 10px;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-areas:
-        "welcome welcome welcome"
-        "user data-user data-site"
-        "calendar orar orar"
-        "anunturi orar orar"
-        "resurse resurse resurse" /* pentru a evita problema nealocarii gridurilor, asta e toata zona 8 */
-        "faq faq faq" 
-        "istoric istoric istoric";
-}
-
-#welcome {
-    grid-area: welcome;
-}
-
-#user {
-    grid-area: user;
-}
-
-#data-user {
-    grid-area: data-user;
-}
-
-#data-site {
-    grid-area: data-site;
-}
-
-#calendar {
-    grid-area: calendar;
-}
-
-#orar {
-    grid-area: orar;
-}
-
-#anunturi {
-    grid-area: anunturi;
-}
-
-#resurse {
-    grid-area: resurse;
-}
-
-#faq {
-    grid-area: faq;
-}
-#istoric{
-    grid-area: istoric;
-}
-
-@media screen and (max-width:1200px) {
-    html{
-        font-size: 14px;
-    }
-    body{
-        --margine-pagina:80px;
-    }
-/* teoretic nu respecta layoutul fiindca 
-        acum nu mai sunt trei elemente pe randul 2
-        dar e un compromis ca orar sa nu para taiat
-        si consider ca justifica schimbarea layoutului */
-    #grid-pagina{
-        grid-template-columns: 0.5fr 2fr;
-        grid-template-areas:"welcome welcome"
-                            "user data-user"
-                            "data-site orar"
-                            "calendar orar"
-                            "anunturi orar"
-                            "resurse resurse"
-                            "faq faq"
-                            "istoric istoric";
-    }
-}
-
-@media screen and (max-width:700px) {
-    html{
-        font-size: 12px;
-    }
-    body{
-        --margine-pagina:50px;
-        animation: none;
-        transition: none;
-    }
-    #grid-pagina{
-        display: block;
-    }
+    transition: var(--margine-pagina) 0.5s ease;
 }

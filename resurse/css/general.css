@@ -198,7 +198,7 @@ img {
         si consider ca justifica schimbarea layoutului */
     #grid-pagina {
         gap: 8px;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 0.5fr 2fr;
         grid-template-areas: "welcome welcome"
             "user data-user"
             "data-site orar"
