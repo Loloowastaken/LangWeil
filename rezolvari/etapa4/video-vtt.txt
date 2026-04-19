@@ -1,0 +1,14 @@
+                <section id="calendar">
+                    <h2><time datetime="2025-03-09"> 9 Martie - Excursia in Japonia </time></h2>
+                    <div class="container-video">
+                        <video controls poster="thumbnail.jpg" preload="metadata" width="100%">
+                            <source src="/resurse/video/japan.mp4" type="video/mp4">
+                            <source src="/resurse/video/japan.webm" type="video/webm">
+                            <track label="Română" kind="subtitles" srclang="ro" src="/resurse/vtt/subtitrare_ro.vtt"
+                                default>
+                            <track label="English" kind="subtitles" srclang="en" src="/resurse/vtt/subtitrare_en.vtt">
+                            <track label="日本語" kind="subtitles" srclang="ja" src="/resurse/vtt/subtitrare_jp.vtt">
+                            <track label="Deutsch" kind="subtitles" srclang="de" src="/resurse/vtt/subtitrare_de.vtt">
+                        </video>
+                    </div>
+                </section>

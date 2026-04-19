@@ -1,0 +1,56 @@
+
+:root {
+    --culoare-link-vizitat: #3bcde5; 
+    --culoare-link-extern-hover: #3b62e3;
+}
+
+a:visited {
+    color: var(--culoare-link-vizitat);
+}
+
+a[href^="http"] {
+    &::before {
+        content: "⮳";
+        display: inline-block;
+        margin-right: 0.2em;
+        font-size: 1.5em; //50% mai mare decat 1em
+        transition: color 0.2s ease;
+        vertical-align: middle;
+    }
+
+    &:hover::before {
+        color: var(--culoare-link-extern-hover);
+    }
+}
+
+
+main a {
+    background-image: radial-gradient(circle, #3b62e3 0%, #3b62e3 40%, transparent 80%, transparent 100%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 0% 0%; 
+    transition: background-size 0.3s ease-in-out;
+    text-decoration: none;
+    padding: 0 0.2em; 
+    border-radius: 4px;
+
+    &:hover {
+        background-size: 100% 100%;
+    }
+
+    &:active {
+        border: 2px solid #dfebf5;
+        background-size: 0% 0%;
+    }
+}
+
+
+//ma asigur ca nu afecteaza alea din meniu
+nav a,
+.menu a {
+    background-image: none !important; 
+
+    &:hover {
+        background-size: 0% 0%;
+    }
+}

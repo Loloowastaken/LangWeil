@@ -17,6 +17,7 @@ ul.meniu {
 }
 
 #ch-menu:checked + ul.meniu {
+  border: 0px;
   visibility: visible;
 }
 
