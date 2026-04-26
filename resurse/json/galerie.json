@@ -1,0 +1,147 @@
+{
+	"cale_galerie": "resurse/imagini/galerie",
+	"imagini": [
+		{
+			"fisier": "deutsch.jpg",
+			"descriere": "Manual Germana",
+			"luni": [
+				"martie",
+				"februarie",
+				"noiembrie",
+				"aprilie",
+				"decembrie",
+				"octombrie"
+			],
+			"limbi": [
+				"germana"
+			],
+			"licenta": "CC0/Pixabay",
+			"sursa": "Pixabay.com"
+		},
+		{
+			"fisier": "french.jpg",
+			"descriere": "Dictionar Franceza",
+			"luni": [
+				"ianuarie",
+				"februarie",
+				"aprilie",
+				"iunie",
+				"octombrie"
+			],
+			"limbi": [
+				"franceza"
+			],
+			"licenta": "CC0/Pixabay",
+			"sursa": "Pixabay.com"
+		},
+		{
+			"fisier": "korean.jpg",
+			"descriere": "Manual Coreeana",
+			"luni": [
+				"ianuarie",
+				"noiembrie",
+				"iunie",
+				"martie",
+				"aprilie"
+			],
+			"limbi": [
+				"coreeana"
+			],
+			"licenta": "CC0/Pixabay",
+			"sursa": "Pixabay.com"
+		},
+		{
+			"fisier": "dictionare.jpg",
+			"descriere": "Bundle Dictionare",
+			"luni": [
+				"noiembrie",
+				"aprilie",
+				"decembrie"
+			],
+			"limbi": [
+				"rusa",
+				"romana",
+				"engleza",
+				"spaniola",
+				"germana",
+				"slovena"
+			],
+			"licenta": "CC0/Pixabay",
+			"sursa": "Pixabay.com"
+		},
+		{
+			"fisier": "multilingual.jpg",
+			"descriere": "Polyglot Bundle",
+			"luni": [
+				"noiembrie",
+				"aprilie",
+				"decembrie",
+				"octombrie"
+			],
+			"limbi": [
+				"franceza",
+				"spaniola",
+				"portugheza",
+				"germana",
+				"japoneza",
+				"italiana"
+			],
+			"licenta": "CC0/Pixabay",
+			"sursa": "Pixabay.com"
+		},
+		{
+			"fisier": "many_books.jpg",
+			"descriere": "Carti in alte limbi",
+			"luni": [
+				"aprilie"
+			],
+			"limbi": [
+				"romana",
+				"engleza",
+				"spaniola",
+				"germana",
+				"franceza",
+				"portugheza",
+				"japoneza",
+				"italiana",
+				"rusa",
+				"slovena",
+				"coreeana"
+			],
+			"licenta": "CC0/Pixabay",
+			"sursa": "Pixabay.com"
+		},
+		{
+			"fisier": "hungarian.jpg",
+			"descriere": "Manuale Ungara",
+			"luni": [
+				"martie",
+				"octombrie",
+				"noiembrie"
+			],
+			"limbi": [
+				"ungara"
+			],
+			"licenta": "CC-BY-NC-ND 2.0",
+			"atribuire": {
+				"autor": "Arthaey Angosii",
+				"sursa": "https://flic.kr/p/T24fME",
+				"licenta_url": "https://creativecommons.org/licenses/by-nc-nd/2.0/deed.en"
+			}
+		},
+		{
+			"fisier": "russian.jpg",
+			"descriere": "Carte ruseasca",
+			"luni": [
+				"ianuarie",
+				"februarie",
+				"decembrie"
+			],
+			"limbi": [
+				"rusa"
+			],
+			"licenta": "CC0/Pixabay",
+			"sursa": "Pixabay.com"
+		}
+	]
+}

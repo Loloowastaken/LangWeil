@@ -1,0 +1,39 @@
+in general cam nemodificat din exemplul dat,
+
+#imagine{
+	position:relative;
+	background-image:url("/resurse/imagini/thumbnail.jpg");
+	background-size:cover;
+	width:500px; 
+	height: 500px;
+	transition:all 2s linear;
+}
+
+#imagine:after, #imagine:before{
+	content:" ";
+	position:absolute;
+	height:100%;
+	width:100%;
+	top:0;
+	left:0;
+	
+	transition:all 2s linear;
+}
+
+#imagine:after{
+	background-color:#f4a0b6; /* aleg culori in afara schemei pentru estetica doar */
+	mix-blend-mode:multiply;
+}
+
+#imagine:before{
+	background-color:#ffcece;
+	mix-blend-mode:screen;
+}
+
+#imagine:hover::before {
+    background-color: #d65c8c;
+}
+
+#imagine:hover::after {
+    background-color: #e6c8ff;
+}

@@ -4,6 +4,18 @@ html {
     transition: font-size 0.5s ease;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-family: Oswald;
+    font-weight: normal;
+}
+
 header {
     padding: 10px;
     border: 5px solid var(--culoare-contur);
@@ -19,6 +31,8 @@ body {
     --culoare-hover: #3b62e3;
     --margine-pagina: 120px;
     background-color: var(--culoare-fundal);
+    color: var(--culoare-text);
+    font-family: Oswald, sans-serif;
     transition: var(--margine-pagina) 0.5s ease;
 }
 
@@ -75,7 +89,8 @@ main {
         "resurse resurse resurse"
         /* pentru a evita problema nealocarii gridurilor, asta e toata zona 8 */
         "faq faq faq"
-        "istoric istoric istoric";
+        "istoric istoric istoric"
+        "galerie-statica galerie-statica galerie-statica";
 }
 
 #welcome {
@@ -118,6 +133,59 @@ main {
     grid-area: istoric;
 }
 
+#galerie-statica {
+    grid-area: galerie-statica;
+}
+
+#grid-galerie {
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+    counter-reset: galerie-index;
+}
+
+.empty-cell {
+    background: transparent;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+}
+
+#grid-galerie figure {
+    margin: 0;
+    padding: 0;
+    counter-increment: galerie-index;
+    transition: none;
+}
+
+#grid-galerie figure img {
+    transition: filter 1.1s ease;
+    filter: contrast(1);
+}
+
+#grid-galerie figcaption {
+    display: inline-block;
+    transform-origin: center;
+    transition: transform 1.1s ease;
+}
+
+#grid-galerie figcaption::before {
+    content: counter(galerie-index, lower-greek) ". ";
+    font-weight: bold;
+}
+
+#grid-galerie figure:hover img {
+    filter: contrast(2);
+}
+
+#grid-galerie figure:hover figcaption {
+    transform: scale(1.2);
+}
+
+
 figure {
     margin: 0;
 }
@@ -147,28 +215,28 @@ img {
 }
 
 /*stilizare video vtt*/
-.container-video{
-    max-width:1200px;
+.container-video {
+    max-width: 1200px;
     margin: 20px auto;
     padding: 0 15px;
 }
 
 video {
-    width:100%;
-    min-width:280px;
-    max-width:1200px;
-    height:auto;
-    display:block;
+    width: 100%;
+    min-width: 280px;
+    max-width: 1200px;
+    height: auto;
+    display: block;
     margin: 0 auto;
-    border-radius:12px;
+    border-radius: 12px;
     box-shadow: 0 4px 15px var(--culoare-contur);
-    background:var(--culoare-fundal);
+    background: var(--culoare-fundal);
 }
 
-::cue{
-    background-color:var(--culoare-fundal);
-    color:var(--culoare-text);
-    font-family:'Courier New', Courier, monospace;
+::cue {
+    background-color: var(--culoare-fundal);
+    color: var(--culoare-text);
+    font-family: 'Courier New', Courier, monospace;
     font-size: 1.2em;
     line-height: 1.4;
     text-align: center;
@@ -176,7 +244,7 @@ video {
     white-space: pre-wrap;
 }
 
-::cue(i){
+::cue(i) {
     font-style: italic
 }
 
@@ -240,7 +308,16 @@ video {
             "anunturi orar"
             "resurse resurse"
             "faq faq"
-            "istoric istoric";
+            "istoric istoric"
+            "galerie-statica galerie-statica";
+    }
+
+    #grid-galerie {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .empty-cell {
+        display: none;
     }
 }
 
@@ -263,6 +340,10 @@ video {
     #grid-pagina {
         gap: 5px;
         display: block;
+    }
+
+    #grid-galerie {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -357,6 +438,88 @@ tr:hover td.exceptie-tabel {
     border-bottom-color: var(--culoare-text);
 }
 
+hr.stilizat {
+    border: none;
+    height: 22px;
+    background: repeating-linear-gradient(to bottom,
+            var(--culoare-text) 0px,
+            var(--culoare-text) 2px,
+            transparent 2px,
+            transparent 5px);
+    border-radius: 2px;
+    margin: 2rem auto;
+    width: 80%;
+}
+
+#imagine {
+    position: relative;
+    background-image: url("/resurse/imagini/thumbnail.jpg");
+    background-size: cover;
+    width: 400px;
+    height: 400px;
+    transition: all 2s linear;
+}
+
+#imagine:after,
+#imagine:before {
+    content: " ";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    transition: all 2s linear;
+}
+
+#imagine:after {
+    background-color: #f4a0b6;
+    /* aleg culori in afara schemei pentru estetica doar */
+    mix-blend-mode: multiply;
+}
+
+#imagine:before {
+    background-color: #ffcece;
+    mix-blend-mode: screen;
+}
+
+#imagine:hover::before {
+    background-color: #d65c8c;
+}
+
+#imagine:hover::after {
+    background-color: #e6c8ff;
+}
+
+.ref-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+#text-reflectat {
+    position: static;
+    transform-origin: 0 0;
+    transform: rotateX(180deg) skewY(-25deg) scaleX(-1) translate(-38px, -30px);
+    opacity: 0.55;
+}
+
+#text {
+    position: relative;
+    transform: skewY(-25deg);
+}
+
+#text,
+#text-reflectat {
+    font-size: 20px;
+    font-weight: bold;
+    transition: color 3s ease;
+}
+
+.ref-container:hover #text,
+.ref-container:hover #text-reflectat {
+    color: var(--culoare-highlight);
+}
 
 /* arata destul de groaznic dar ma rog... */
 @media print {
@@ -432,7 +595,7 @@ tr:hover td.exceptie-tabel {
         position: fixed;
         bottom: 0;
         right: 0;
-        width: 4cm; 
+        width: 4cm;
         height: 1cm;
         border: 3px solid black;
         border-radius: 10px;

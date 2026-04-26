@@ -16,7 +16,6 @@ a[href^=http]::before {
   transition: color 0.2s ease;
   vertical-align: middle;
 }
-
 a[href^=http]:hover::before {
   color: var(--culoare-link-extern-hover);
 }
@@ -31,11 +30,9 @@ main a {
   padding: 0 0.2em;
   border-radius: 4px;
 }
-
 main a:hover {
   background-size: 100% 100%;
 }
-
 main a:active {
   border: 2px solid #dfebf5;
   background-size: 0% 0%;
@@ -45,8 +42,7 @@ nav a,
 .menu a {
   background-image: none !important;
 }
-
 nav a:hover,
 .menu a:hover {
   background-size: 0% 0%;
-} 
+}

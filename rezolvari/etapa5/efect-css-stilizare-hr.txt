@@ -1,0 +1,22 @@
+
+hr.stilizat {
+    border: none;
+    height: 22px;                    
+    background: repeating-linear-gradient(
+        to bottom,
+        var(--culoare-text) 0px,
+        var(--culoare-text) 2px,    
+        transparent 2px,
+        transparent 5px               
+    );
+    border-radius: 2px;          
+    margin: 2rem auto;
+    width: 80%;
+}
+
+
+IN INDEX.EJS:
+
+                    <hr class="stilizat">
+
+intre doua headinguri

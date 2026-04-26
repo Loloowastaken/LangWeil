@@ -166,6 +166,9 @@
                             <track label="Deutsch" kind="subtitles" srclang="de" src="/resurse/vtt/subtitrare_de.vtt">
                         </video>
                     </div>
+                    <h2>Poza din excursie</h2>
+                    <div id="imagine">
+                    </div>
                 </section>
                 <section id="anunturi"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae maximus
                     nunc,
@@ -182,7 +185,10 @@
                     in
                     porta urna purus ac neque.</section>
                 <section id="resurse">
-                    <h2><b>Exemple de resurse</b></h2>
+                    <div class="ref-container">
+                        <h2 id="text">Exemple</h2>
+                        <div id="text-reflectat">Exemple</div>
+                    </div>
                     <h3>Alfabet Japonez</h3>
                     <figure id="fig1" class="fg-img">
                         <picture>
@@ -192,7 +198,8 @@
                         </picture>
                         <figcaption>Hiragana Chart</figcaption>
                     </figure>
-                    <h3>Linkuri utile</h3>
+                    <hr class="stilizat">
+                    <h3>Linkuri</h3>
                     <div class="link-resurse">
                         <h4><a href="https://sakubi.neocities.org/" target="_blank">Ghid de gramatica japonez</a></h4>
                         <h4><a href="https://sakubi.neocities.org/#territory" target="_blank">Gramatica mai avansata din
@@ -333,6 +340,55 @@
                     </details>
                 </section>
             </div>
+            <section id="galerie-statica">
+                <h2>Galerie</h2>
+                <div id="grid-galerie">
+                    <% const vectLuni=["ianuarie", "februarie" , "martie" , "aprilie" , "mai" , "iunie" , "iulie"
+                        , "august" , "septembrie" , "octombrie" , "noiembrie" , "decembrie" ]; 
+                        const lunaCurenta=vectLuni[new Date().getMonth()]; 
+                        let imaginiFiltrate=locals.imagini.filter(imag=>imag.luni && imag.luni.includes(lunaCurenta));
+
+                        const maxImages = 12;
+                        imaginiFiltrate = imaginiFiltrate.slice(0, maxImages);
+
+                        function getFileNameFromPath(filePath) {
+                            if (!filePath) return "imagine";
+                            const parts = filePath.split('/');
+                            const fileName = parts[parts.length - 1];
+                            return fileName.replace(/\.[^/.]+$/, "");
+                        }
+                        /*12 imagini max => 8x3*/
+                        const rows = 8;
+                        const cols = 3;
+                        let grid = Array(rows).fill().map(() => Array(cols).fill(null));
+                        let imgIndex = 0;
+                        for (let r = 0; r < rows && imgIndex < imaginiFiltrate.length; r++) { 
+                            for (let c=0; c < cols && imgIndex < imaginiFiltrate.length; c++) { 
+                                if ((r + c) % 2===0) {
+                                grid[r][c]=imaginiFiltrate[imgIndex]; imgIndex++; } 
+                            } 
+                        } 
+                        for (let r=0; r < rows; r++) { 
+                            for (let c=0; c < cols; c++) { 
+                                const image=grid[r][c]; 
+                                if (image) { 
+                                    let altText=image.alt; 
+                                    if(!altText || altText.trim()==="" ) { altText=getFileNameFromPath(image.fisier); } %>
+                            <figure>
+                                <picture>
+                                    <source srcset="<%- image.fisier_mediu %>" media="(max-width:1100px)">
+                                    <img src="<%- image.fisier %>" alt="<%- altText %>" title="<%- image.descriere %>">
+                                </picture>
+                                <figcaption><%- image.descriere %></figcaption>
+                            </figure>
+                            <% } else { %>
+                                <div class="empty-cell"></div>
+                                <% } } } %>
+                </div>
+            </section>
         </main>
         <%- include('../fragmente/footer.ejs') %>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+                crossorigin="anonymous"></script>
 </body>

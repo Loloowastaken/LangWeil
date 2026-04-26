@@ -1,0 +1,30 @@
+blasfemie
+
+.ref-container{
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+#text-reflectat{
+	position:static;
+	transform-origin:0 0;
+	transform: rotateX(180deg) skewY(-25deg) scaleX(-1) translate(-38px,-30px); 
+	opacity:0.55;
+}
+
+#text{	
+	position:relative;
+    transform: skewY(-25deg);
+}
+
+#text, #text-reflectat{
+	font-size:20px;
+	font-weight: bold;
+    transition: color 3s ease;
+}
+
+.ref-container:hover #text,
+.ref-container:hover #text-reflectat {
+    color: var(--culoare-highlight);
+}

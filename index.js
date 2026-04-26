@@ -2,6 +2,8 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs");
 const sass = require("sass");
+const pg = require("pg");
+const sharp = require("sharp");
 
 app = express();
 app.set("view engine", "ejs");
@@ -18,6 +20,19 @@ console.log("Folder index.js", __dirname);
 console.log("Folder curent (de lucru)", process.cwd()); // nu e echivalent cu __dirname, __dirname il cauta pe index.js, cwd cauta folderul in care suntem)
 console.log("Cale fisier", __filename);
 
+/*client = new pg.Client({
+    database:"mi_2026",
+    user:"mihnea",
+    password:"crimmy",
+    host:"localhost",
+    port:8080
+})
+
+client.connect()*/
+
+app.use("/resurse", express.static(path.join(__dirname, "resurse")));
+app.use("/dist", express.static(path.join(__dirname, "node_modules/bootstrap/dist")));
+
 let vect_foldere = ["temp", "logs", "backup", "fisiere_uploadate"]
 for (let folder of vect_foldere) {
     let caleFolder = path.join(__dirname, folder);
@@ -27,7 +42,7 @@ for (let folder of vect_foldere) {
 }
 
 
-app.use("/resurse", express.static(path.join(__dirname, "resurse")));
+
 
 app.get("/favicon.ico", function (req, res) {
     res.sendFile(path.join(__dirname, "resurse/imagini/ico/favicon.ico"))
@@ -36,7 +51,8 @@ app.get("/favicon.ico", function (req, res) {
 app.get(["/", "/index", "/home"], function (req, res) {
     //res.sendFile(path.join(__dirname, "index.html"));
     res.render("pagini/index", {
-        ip: req.ip
+        ip: req.ip,
+        imagini: obGlobal.obImagini.imagini
     });
 });
 
@@ -44,6 +60,11 @@ app.get("/despre", function (req, res) {
     res.render("pagini/despre");
 });
 
+app.get(["/gallery", "/galerie"], function (req, res) {
+    res.render("pagini/gallery", {
+        imagini: obGlobal.obImagini.imagini
+    });
+});
 
 //FUNCTIA BONUS!!!!!!!!
 function validareFisiereErori(caleFisier) {
@@ -106,21 +127,21 @@ function validareFisiereErori(caleFisier) {
             valid = false;
         }
     }
-    if (def.imagine){
+    if (def.imagine) {
         verificareImagine(def.imagine, "Eroarea default");
     }
-    if (Array.isArray(erori.info_erori)){
-        for (let i = 0; i<erori.info_erori.length; i++){
+    if (Array.isArray(erori.info_erori)) {
+        for (let i = 0; i < erori.info_erori.length; i++) {
             const er = erori.info_erori[i];
             const context = `Eroarea cu identificatorul "${er.identificator}"`;
-            if (er.imagine){
+            if (er.imagine) {
                 verificareImagine(er.imagine, context);
             } else {
                 console.error(`ERROR: ${context} nu are proprietatea "imagine".`);
                 valid = false;
             }
         }
-    } else{
+    } else {
         console.error(`ERROR: "info_erori" nu este un vector.`);
         valid = false;
     }
@@ -128,9 +149,9 @@ function validareFisiereErori(caleFisier) {
 
 function initErori() {
     let continut = fs.readFileSync(path.join(__dirname, "resurse/json/erori.json")).toString("utf-8");
-    const caleFisier = path.join(__dirname,"resurse/json/erori.json");
+    const caleFisier = path.join(__dirname, "resurse/json/erori.json");
     let isValid = validareFisiereErori(caleFisier);
-    if(!isValid){
+    if (!isValid) {
         console.warn("Datele din erori.json nu sunt complet valide...");
     }
     let erori = obGlobal.obErori = JSON.parse(continut)
@@ -159,12 +180,36 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
 
 }
 
+function initImagini() {
+    var continut = fs.readFileSync(path.join(__dirname, "resurse/json/galerie.json")).toString("utf-8");
+
+    obGlobal.obImagini = JSON.parse(continut);
+    let vImagini = obGlobal.obImagini.imagini;
+    let caleGalerie = obGlobal.obImagini.cale_galerie
+
+    let caleAbs = path.join(__dirname, caleGalerie);
+    let caleAbsMediu = path.join(caleAbs, "mediu");
+    if (!fs.existsSync(caleAbsMediu))
+        fs.mkdirSync(caleAbsMediu);
+
+    for (let imag of vImagini) {
+        [numeFis, ext] = imag.fisier.split("."); //"ceva.png" -> ["ceva", "png"]
+        let caleFisAbs = path.join(caleAbs, imag.fisier);
+        let caleFisMediuAbs = path.join(caleAbsMediu, numeFis + ".webp");
+        sharp(caleFisAbs).resize(300).toFile(caleFisMediuAbs);
+        imag.fisier_mediu = path.join("/", caleGalerie, "mediu", numeFis + ".webp")
+        imag.fisier = path.join("/", caleGalerie, imag.fisier)
+
+    }
+    // console.log(obGlobal.obImagini)
+}
+initImagini();
+
 function compileazaScss(caleScss, caleCss) {
     if (!caleCss) {
 
-        let numeFisExt = path.basename(caleScss); // "folder1/folder2/a.scss" -> "a.scss"
-        let numeFis = numeFisExt.split(".")[0]   /// "a.scss"  -> ["a","scss"]
-        caleCss = numeFis + ".css"; // output: a.css
+        let numeFisExt = path.basename(caleScss, path.extname(caleScss)); // "folder1/folder2/a.b.scss" -> "a.b"
+        caleCss = numeFisExt + ".css"; // a.b.css
     }
 
     if (!path.isAbsolute(caleScss))
@@ -181,7 +226,7 @@ function compileazaScss(caleScss, caleCss) {
 
     let numeFisCss = path.basename(caleCss);
     if (fs.existsSync(caleCss)) {
-        fs.copyFileSync(caleCss, path.join(obGlobal.folderBackup, "resurse/css", numeFisCss))// +(new Date()).getTime()
+        fs.copyFileSync(caleCss, path.join(obGlobal.folderBackup, "resurse/css", numeFisCss) + "_" + (new Date()).getTime())
     }
     rez = sass.compile(caleScss, { "sourceMap": true });
     fs.writeFileSync(caleCss, rez.css)
@@ -257,5 +302,7 @@ app.use(function (req, res) { //app.get('*') imi dadea crash la nodemon...
 
 
 
-app.listen(8080);
+app.listen(8081); // ca prostul, cand am instalat pgadmin, i-am pus portul 8080 (de ce? fiindca aparent am creier de bustean)
+// acum nu stiu cum sa-l schimb, deci de acum incolo doar vom fi pe localhost 8081 si cu asta basta
+//jumatate de ora pe prostia asta ...
 console.log("Serverul a pornit!");
